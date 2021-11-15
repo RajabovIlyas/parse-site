@@ -1,4 +1,4 @@
-import {Action, Controller, Get, Param, UseAfter, UseBefore, UseInterceptor} from 'routing-controllers';
+import {Action, Controller, Get, Param, QueryParams, UseAfter, UseBefore, UseInterceptor,} from 'routing-controllers';
 import 'reflect-metadata';
 import {ParseService} from "./parse-service";
 import {Service} from "typedi";
@@ -16,8 +16,8 @@ export class ParseController {
 
 
     @Get()
-    getAll(){
-
-        return this.parseService.getAll();
+    getAll(@QueryParams() query: {page: string}){
+        const { page = '1'} = query;
+        return this.parseService.getAll(Number.parseInt(page));
     }
 }

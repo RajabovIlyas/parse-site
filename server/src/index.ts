@@ -13,6 +13,7 @@ useContainer(Container);
 
 const app = createExpressServer({
     routePrefix: '/api',
+    cors: true,
     controllers: [ParseController],// we specify controllers we want to use
     middlewares: [middleware],
 });
